@@ -16,9 +16,7 @@ public class UserController  {
     @Autowired
     UserService userService;
 
-
-
-    @RequestMapping(value="/users")
+    @RequestMapping(value="/getUsers")
     @ResponseBody
     public List<User> getUsers() {
 
@@ -26,5 +24,15 @@ public class UserController  {
 
         return userList;
 
+    }
+
+    /**
+     * jpa方法：全查询
+     * @return
+     */
+    @RequestMapping(value = "/QueryList")
+    public  List<User> queryList() {
+        List<User> list = userService.queryList();
+        return list ;
     }
 }
