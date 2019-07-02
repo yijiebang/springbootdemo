@@ -1,2 +1,7 @@
-# springboot
-springboot的多线程使用
+# springboot+mybatis+mysql
+-----
+###  springboot 2.0.4.RELEASE
+-----
+###  mybatis-spring-boot-starter 1.3.0
+-----
+
