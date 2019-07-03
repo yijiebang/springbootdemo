@@ -1,7 +1,6 @@
 package com.yjb.controller;
 
 import com.yjb.config.JsonResult;
-import com.yjb.config.MyException;
 import com.yjb.entity.User;
 import com.yjb.service.UserService;
 import org.slf4j.Logger;
@@ -24,16 +23,12 @@ public class UserController  {
 
     @RequestMapping("/logtest")
     public JsonResult Test(@RequestParam(value = "role") Integer role) throws Exception {
-        logger.info("访问了controller");
-        int i = role;
+            logger.info("访问了controller");
 
-        //Exception异常会自动拦截，这里只是做个测试自定义异常
-        if (i<0) {
-            //int j = i / 0;
-            throw new MyException("999", "异常");
-        } else {
+                 //Exception异常会自动拦截，这里只是做个测试自定义异常
+
             return new JsonResult(200, "成功", new HashMap<>(0));
-        }
+
     }
 
     /***
