@@ -53,7 +53,7 @@ public class UserController  {
 
         logger.info("访问了controller,根据用户id查询用户");
         User user = userService.findById(id);
-        System.out.println("用户:"+user.toString());
+        logger.info("用户:"+user.toString());
         return user;
     }
     /**
@@ -66,7 +66,7 @@ public class UserController  {
                          @RequestParam("age")   Integer age,
                          @RequestParam("pwd")  String pwd,
                          @RequestParam("idcard")  String idcard) {
-        System.out.println("新增用户");
+        logger.info("访问了新增用户");
         User user=new User();
         user.setName(name);
         user.setAge(age);
@@ -74,10 +74,10 @@ public class UserController  {
         user.setPwd(pwd);
         int result = userService.insert(user);
         if(result==1) {
-            System.out.println("新增成功");
+            logger.info("新增成功");
             return "success";
         }else {
-            System.out.println("新增失败");
+            logger.info("新增失败");
             return "error";
         }
     }
@@ -87,17 +87,17 @@ public class UserController  {
      */
     @RequestMapping("/update")
     public String update(@RequestParam("id") int id,@RequestParam("name") String name) {
-        System.out.println("修改用户");
+        logger.info("修改用户");
         User user = new User();
         user.setId(id);
         user.setName(name);
         System.out.println(user);
         int result = userService.update(user);
         if(result==1) {
-            System.out.println("修改成功");
+            logger.info("修改成功");
             return "success";
         }else {
-            System.out.println("修改失败");
+            logger.info("修改失败");
             return "error";
         }
     }
@@ -109,13 +109,13 @@ public class UserController  {
      */
     @RequestMapping("/delete")
     public String delete(@RequestParam("id") int id) {
-        System.out.println("删除用户");
+        logger.info("删除用户");
         int result = userService.delete(id);
         if(result==1) {
-            System.out.println("删除成功");
+            logger.info("删除成功");
             return "success";
         }else {
-            System.out.println("删除失败");
+            logger.info("删除失败");
             return "error";
         }
     }
