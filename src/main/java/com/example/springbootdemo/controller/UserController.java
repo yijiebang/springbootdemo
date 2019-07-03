@@ -35,4 +35,13 @@ public class UserController  {
         List<User> list = userService.queryList();
         return list ;
     }
+    /**
+     * jpa方法：全查询
+     * @return
+     */
+    @RequestMapping(value = "/queryNameList")
+    public  List<User> queryNameList(String name) {
+        List<User> list = userService.queryNameList(name);
+        return list ;
+    }
 }

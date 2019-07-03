@@ -16,9 +16,9 @@ public interface UserDao{
 
     @Select(value = "select * from user")
     @Results(value = { @Result(column = "id", property = "id", jdbcType = JdbcType.INTEGER),
-            @Result(column = "age", property = "age", jdbcType = JdbcType.INTEGER),
+            @Result(column = "age",  property = "age",  jdbcType = JdbcType.INTEGER),
             @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
-            @Result(column = "pwd", property = "pwd", jdbcType = JdbcType.VARCHAR) })
+            @Result(column = "pwd",  property = "pwd",  jdbcType = JdbcType.VARCHAR) })
     List<User> getUsers();
 
 }
