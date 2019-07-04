@@ -1,0 +1,67 @@
+Window 下安装
+下载地址：https://github.com/MSOpenTech/redis/releases。
+下载到的Redis支持32bit和64bit。根据自己实际情况选择，将下载文件拷贝到自定义盘符，解压后将目录取名redis， 如 D:\reids
+
+ 打开一个cmd窗口 使用cd命令切换目录到 D:\redis 运行
+  redis-server.exe redis.windows.conf 。
+
+ 再另启一个cmd窗口，原来的不要关闭，不然就无法访问服务端了。
+ 切换到redis目录下运行
+  redis-cli.exe -h 127.0.0.1 -p 6379 。
+ 设置键值对
+  set myKey abc
+ 取出键值对
+  get myKey
+
+  //安全问题
+
+  我们可以通过以下命令查看是否设置了密码验证：
+
+  127.0.0.1:6379> CONFIG get requirepass
+  1) "requirepass"
+  2) ""
+
+  "" 默认情况下 requirepass 参数是空的，这就意味着你无需通过密码验证就可以连接到 redis 服务。
+
+     你可以通过以下命令来修改该参数：
+     127.0.0.1:6379> CONFIG set requirepass "runoob"
+     OK
+     127.0.0.1:6379> CONFIG get requirepass
+     1) "requirepass"
+     2) "runoob"
+
+     设置密码后，客户端连接 redis 服务就需要密码验证，否则无法执行命令。
+
+    AUTH 命令基本语法格式如下：
+   cmd:连接客户端
+   E:\Redis>redis-cli.exe
+    然后如下所示，Auth 密码
+
+    127.0.0.1:6379> AUTH password
+    实例
+    127.0.0.1:6379> AUTH "runoob"
+    OK
+    127.0.0.1:6379> SET mykey "Test value"
+    OK
+    127.0.0.1:6379> GET mykey
+    "Test value"
+
+
+
+   //备份
+   Redis SAVE 命令用于创建当前数据库的备份。
+   cmd:
+   redis 127.0.0.1:6379> SAVE
+   //恢复数据
+   如果需要恢复数据，只需将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可
+
+
+
+   //java使用，pom.xml添加支持
+           <dependency>
+               <groupId>redis.clients</groupId>
+               <artifactId>jedis</artifactId>
+               <version>2.9.0</version>
+           </dependency>
+
+   //操作如Redis.java所示
